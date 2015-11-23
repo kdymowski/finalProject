@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use League\Csv\Reader;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +15,18 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        $this->call(UserTableSeeder::class);
 
         Model::reguard();
+    }
+}
+class UserTableSeeder extends seeder
+{
+    public function run()
+    {
+        DB::table('users')->delete();
+
+        App\User::create(['firstName' => 'Kyle', 'lastName' => 'Dymowski', 'cwid' => '12345678', 'email' => 'kdmowsk@mines.edu']);
+
     }
 }
