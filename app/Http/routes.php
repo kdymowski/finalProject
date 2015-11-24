@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('info', 'PagesController@info');
 Route::get('home', 'PagesController@home');
 
+Route::get('auth', 'PagesController@auth');
+
 Route::controllers([
    'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

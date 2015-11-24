@@ -26,7 +26,7 @@ class UserTableSeeder extends seeder
     {
         DB::table('users')->delete();
 
-        App\User::create(['firstName' => 'Kyle', 'lastName' => 'Dymowski', 'cwid' => '12345678', 'email' => 'kdmowsk@mines.edu']);
+        App\User::create(['name' => 'Kyle Dymowski', 'password' => '12345678', 'email' => 'kdmowsk@mines.edu']);
 
     }
 }

@@ -5,7 +5,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Testing</h1>
+<button type="button" onclick="window.location='{{ action('PagesController@auth') }}'">Button</button>
 
 </body>
 </html>
