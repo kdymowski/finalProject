@@ -38,33 +38,24 @@
         </div>
         <br>
         <!--Creating an input field and add button for classes using bootstrap-->
-        {!!Form::label('classes', 'Classes Taken:')!!}
-        <div class="form-group" id="classes">
-            <div class="col-xs-5">
-                {!!Form::text('class[0]', null, ['class' => 'form-control', 'placeholder' => 'CSCI445'])!!}
-            </div>
-            <div class="col-xs-1">
-                {!! Form::button('+', ['class' => 'btn btn-default', 'id' => 'plusButton']) !!}
-            </div>
-        </div>
-    <!--Creating a drop down box for team style using bootstrap-->
-        <div class="dropdown">
-            {!! Form::button('Team Style <span class="caret"></span>', ['class' => 'btn btn-primary dropdown-toggle', 'data-toggle' => 'dropdown']) !!}
-            <ul class="dropdown-menu">
-                <li><a>HTML</a></li>
-                <li><a>CSS</a></li>
-                <li><a>JavaScript</a></li>
+        <div class="dropdown" id="classesDropdown">
+            {!! Form::button('Classes Taken <span class="caret"></span>', ['class' => 'btn btn-primary dropdown-toggle', 'data-toggle' => 'dropdown']) !!}
+            <ul class="dropdown-menu" id="classDropdown">
+                <li><a href="#">CSCI261</a></li>
+                <li><a href="#">CSCI262</a></li>
+                <li><a href="#">CSCI306</a></li>
             </ul>
         </div>
-
-        {!!Form::label('team', 'Team Style:')!!}
-        <select class="form-control">
-            <option value="one">One</option>
-            <option value="two">Two</option>
-            <option value="three">Three</option>
-            <option value="four">Four</option>
-            <option value="five">Five</option>
-        </select>
+        <br>
+    <!--Creating a drop down box for team style using bootstrap-->
+        <div class="dropdown" id="teamStyleDropdown">
+            {!! Form::button('Team Style <span class="caret"></span>', ['class' => 'btn btn-primary dropdown-toggle', 'data-toggle' => 'dropdown']) !!}
+            <ul class="dropdown-menu" id="styleDropdown">
+                <li><a href="#">Social</a></li>
+                <li><a href="#">Competitive</a></li>
+                <li><a href="#">IDGAF</a></li>
+            </ul>
+        </div>
         <br>
         <!--Form submit-->
         {!!Form::submit('update info', ['class' => 'btn btn-primary form-control'])!!}
@@ -74,38 +65,62 @@
         //add button click handler
         $(document).ready(function()
         {
-            // The maximum number of options
-            var MAX_OPTIONS = 5;
-            var count = 0;
-
-            $('#plusButton').click(function()
-            //$('infoForm').on('click', '.addButton', function()
+            //classes style selection method
+            $('#classDropdown').on('click', 'li', function()
             {
-                //$('#classes').after('<p>wat</p>');
-                if(count >= MAX_OPTIONS)
-                    return;
-                count++;
-                //alert(count);
-                $('#classes').after('<div class="form-group" id="newClass">' +
-                    '<div class="col-xs-5">' +
-                        '<input class="form-control" placeholder="CSCI" name="class['+ count +']" type="text">' +
+                //get the selected text from dropdown
+                var Value = $(this).text();
+
+                //creating a new text field
+                $('#classesDropdown').after('<div class="form-group" id="addedClass">' +
+                        '<div class="col-xs-5">' +
+                        '<input class="form-control" value=' + Value + ' name="class" id="class" type="text" disabled/>' +
+                        '</div>' +
+                        '<div class="col-xs-1">' +
+                        '<button class="btn btn-danger" id="removeClass" type="button" >Remove</button>' +
+                        '</div>' +
+                        '</div>');
+                //remove style from drop box
+                $(this).remove();
+            });
+            //remove team style selection method
+            $('div').on('click', '#removeClass', function()
+            {
+                //get value of the text box
+                var Value = $('#class').val();
+                //remove the text box
+                $('#addedClass').remove();
+                //return style to drop box
+                $('#classDropdown').append('<li><a href="#">' + Value + '</a></li>');
+            })
+            //team style selection method
+            $('#styleDropdown').on('click', 'li', function()
+            {
+                //get the selected text from dropdown
+                var Value = $(this).text();
+
+                //creating a new text field
+                $('#teamStyleDropdown').after('<div class="form-group" id="addedStyle">' +
+                '<div class="col-xs-5">' +
+                        '<input class="form-control" value=' + Value + ' name="teamstyle" id="style" type="text" disabled/>' +
                     '</div>' +
                     '<div class="col-xs-1">' +
-                        '<button class="btn btn-default" id="minusButton" type="button">-</button>' +
+                        '<button class="btn btn-danger" id="removeTeamStyle" type="button" >Remove</button>' +
                     '</div>' +
                 '</div>');
+                //remove style from drop box
+               $(this).remove();
             });
-            //remove the class
-            $('div').on('click','#minusButton', function()
+            //remove team style selection method
+            $('div').on('click', '#removeTeamStyle', function()
             {
-                count--;
-                //alert(count);
-                $('#newClass').remove();
-            });
-            $('.dropdown-menu').click(function()
-            {
-
-            });
+                //get value of the text box
+                var Value = $('#style').val();
+                //remove the text box
+                $('#addedStyle').remove();
+                //return style to drop box
+                $('#styleDropdown').append('<li><a href="#">' + Value + '</a></li>');
+            })
         });
     </script>
 @stop
