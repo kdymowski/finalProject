@@ -19,6 +19,19 @@ class PagesController extends Controller
     public function auth(){
         return view('auth.login');
     }
+    public function updateInfo($id, Request $request)
+    {
+        //get data for table
+        $info = \App\User::find($id);
+
+        $info->name = $request->name;
+        $info->language = $request->language;
+        $info->class = $request->class;
+        $info->teamstyle = $request->teamstyle;
+
+        //redirect to info
+        return redirect ('auth.info');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('auth/info', 'PagesController@info');
 Route::get('home', 'PagesController@home');
 Route::get('auth/login', 'PagesController@auth');
-Route::post('auth/{id}/update', 'PagesController')
+Route::post('auth/{id}/update', 'PagesController@updateInfo');
 
 Route::controllers([
    'auth' => 'Auth\AuthController',

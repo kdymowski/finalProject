@@ -108,6 +108,9 @@
             //language selection method
             $('#languageDropdown').on('click', 'li', function()
             {
+                //avoid disabled from being chosen
+                if($(this).text() == 'top is most favored')
+                    return;
                 //get the selected text from dropdown
                 var Value = $(this).text();
 
