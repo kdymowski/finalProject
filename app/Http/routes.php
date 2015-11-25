@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('info', 'PagesController@info');
+Route::get('auth/info', 'PagesController@info');
 Route::get('home', 'PagesController@home');
-
-Route::get('auth', 'PagesController@auth');
+Route::get('auth/login', 'PagesController@auth');
+Route::post('auth/{id}/update', 'PagesController')
 
 Route::controllers([
    'auth' => 'Auth\AuthController',
