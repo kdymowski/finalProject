@@ -16,6 +16,8 @@
 								@endforeach
 							</ul>
 						</div>
+					@else
+
 					@endif
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
