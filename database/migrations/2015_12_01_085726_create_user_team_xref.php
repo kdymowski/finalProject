@@ -12,11 +12,11 @@ class CreateUserTeamXref extends Migration
      */
     public function up()
     {
-        Schema::create('userTeamXref', function (Blueprint $table) {
+        /*Schema::create('userTeamXref', function (Blueprint $table) {
             $table->foreign('userID')->references('id')->on('users');
             $table->foreign('teamID')->references('id')->on('team');
 
-        });
+        });*/
     }
 
     /**

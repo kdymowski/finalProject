@@ -12,11 +12,11 @@ class CreateUserCourseXref extends Migration
      */
     public function up()
     {
-        Schema::create('userCourseXref', function (Blueprint $table) {
+        /*Schema::create('userCourseXref', function (Blueprint $table) {
             $table->foreign('userID')->references('id')->on('users');
             $table->foreign('courseID')->references('id')->on('courses');
 
-        });
+        });*/
     }
 
     /**

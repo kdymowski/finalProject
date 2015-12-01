@@ -18,7 +18,11 @@ class PagesController extends Controller
         return view('home');
     }
     public function info(){
-        return view('auth.info');
+        if (\Auth::guest()){
+            return view('/');
+        }
+        $id = \Auth::user()->id;
+        return view('info');
     }
     public function auth(){
         return view('auth.login');

@@ -12,12 +12,12 @@ class CreateTeam extends Migration
      */
     public function up()
     {
-        Schema::create('team', function (Blueprint $table) {
+        /*Schema::create('team', function (Blueprint $table) {
             $table->increments('id');
             $table->string('teamName');
             $table->string('teamType');
 
-        });
+        });*/
     }
 
     /**
