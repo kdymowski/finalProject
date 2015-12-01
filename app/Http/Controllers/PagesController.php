@@ -10,6 +10,10 @@ use App\Http\Controllers\Controller;
 class PagesController extends Controller
 {
 
+
+    public function welcome(){
+        return view('welcome');
+    }
     public function home(){
         return view('home');
     }
@@ -22,7 +26,7 @@ class PagesController extends Controller
     public function updateInfo($id, Request $request)
     {
         //get data for table
-        $info = \App\User::find($id);
+        $info = \App\User::findorfail($id);
 
         $info->name = $request->name;
         $info->language = $request->language;
