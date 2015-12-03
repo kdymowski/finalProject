@@ -26,6 +26,6 @@ class CreateUserTeamXref extends Migration
      */
     public function down()
     {
-        Schema::drop('userTeamXref');
+        //Schema::drop('userTeamXref');
     }
 }

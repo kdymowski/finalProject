@@ -26,6 +26,6 @@ class CreateUserLanguageXref extends Migration
      */
     public function down()
     {
-        Schema::drop('userLangXref');
+        //Schema::drop('userLangXref');
     }
 }

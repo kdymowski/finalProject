@@ -980,6 +980,7 @@
                 "laravel"
             ],
             "time": "2015-12-02 21:59:57"
+<<<<<<< HEAD
         },
         {
             "name": "laravelcollective/html",
@@ -1030,6 +1031,8 @@
                 }
             ],
             "time": "2015-11-28 08:27:09"
+=======
+>>>>>>> a31a7095fee6b1b609f76cb848993f1e8ba1ba58
         },
         {
             "name": "league/flysystem",

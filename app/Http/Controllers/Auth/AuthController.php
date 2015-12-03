@@ -45,7 +45,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'firstName' => 'required|max:255',
+            'lastName' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:2',
         ]);
@@ -60,7 +61,12 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
+            'language' => 'C++',                //default language is c++
+            'class' => 'CSCI445',               //default class
+            'teamStyle' => 'IDGAF',             //default team style is I Don't Give A FUUUUUUUUUU
+            'bio' => 'Update bio please',       //default bio
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
