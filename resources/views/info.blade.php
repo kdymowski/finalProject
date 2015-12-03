@@ -5,8 +5,20 @@
     <!--let laravel use the form builder-->
     {!!Form::model(null, ['url' => ['/'], 'class' => 'form-horizontal', 'id' => 'infoForm'])!!}
         <!--Creating an input field for name using bootstrap-->
-        {!!Form::label('name', 'Name:')!!}
-        {!!Form::text('name', auth()->user()->name, ['class' => 'form-control', 'placeholder' => 'Student Miner'])!!}
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">First</label>
+                </div>
+                <input type="text" class="form-control" name="firstName" value="{{auth()->user()->firstName}}">
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Last</label>
+                </div>
+                <input type="text" class="form-control" name="lastName" value="{{auth()->user()->lastName}}">
+            </div>
+        </div>
         <br>
         <!--Creating an input field for language preference using bootstrap-->
         <div class="dropdown" id="languagesDropdown">
