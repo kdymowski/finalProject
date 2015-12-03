@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 Route::get('/', 'PagesController@welcome');
 Route::get('info', 'PagesController@info');
-Route::get('home', 'PagesController@home');
+//Route::get('home', 'PagesController@home');
 Route::get('auth/login', 'PagesController@auth');
 Route::post('auth/{id}/update', 'PagesController@updateInfo');
 Route::get('/profile/{uname}', 'ProfileController@index');

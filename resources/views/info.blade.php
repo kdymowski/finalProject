@@ -6,7 +6,7 @@
     {!!Form::model(null, ['url' => ['/'], 'class' => 'form-horizontal', 'id' => 'infoForm'])!!}
         <!--Creating an input field for name using bootstrap-->
         {!!Form::label('name', 'Name:')!!}
-        {!!Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Student Miner'])!!}
+        {!!Form::text('name', auth()->user()->name, ['class' => 'form-control', 'placeholder' => 'Student Miner'])!!}
         <br>
         <!--Creating an input field for language preference using bootstrap-->
         <div class="dropdown" id="languagesDropdown">
