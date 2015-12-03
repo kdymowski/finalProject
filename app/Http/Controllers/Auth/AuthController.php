@@ -63,6 +63,10 @@ class AuthController extends Controller
         return User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
+            'language' => 'C++',                //default language is c++
+            'class' => 'CSCI445',               //default class
+            'teamStyle' => 'IDGAF',             //default team style is I Don't Give A FUUUUUUUUUU
+            'bio' => 'Update bio please',       //default bio
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

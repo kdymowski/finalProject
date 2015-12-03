@@ -22,7 +22,9 @@ class PagesController extends Controller
             return view('/');
         }
         $id = \Auth::user()->id;
-        return view('info');
+        $languages = \App\languages::all();
+        $courses = \App\courses::all();
+        return view('info')->with(compact('languages'))->with(compact('courses'));
     }
     public function auth(){
         return view('auth.login');

@@ -18,8 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('language');
+            $table->string('class');
             $table->string('bio');
-            $table->string('teamSytle');
+            $table->string('teamStyle');
             $table->string('email')->unique();
             $table->string('updated_at');
             $table->string('created_at');
