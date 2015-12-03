@@ -11,7 +11,6 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateTeam' => $baseDir . '/database/migrations/2015_12_01_085736_create_team.php',
     'CreateUserCourseXref' => $baseDir . '/database/migrations/2015_12_01_085045_create_user_course_xref.php',
-    'CreateUserInfo' => $baseDir . '/database/migrations/2015_12_01_084240_create_user_info.php',
     'CreateUserLanguageXref' => $baseDir . '/database/migrations/2015_12_01_085059_create_user_language_xref.php',
     'CreateUserTeamXref' => $baseDir . '/database/migrations/2015_12_01_085726_create_user_team_xref.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',

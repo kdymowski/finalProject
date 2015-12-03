@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
+use Request;
 
 class PagesController extends Controller
 {
@@ -40,6 +41,19 @@ class PagesController extends Controller
         //redirect to info
         return redirect ('auth.info');
     }
+    public function createteams()
+    {
+        $id = \Auth::user()->id;
+        $admin = DB::table('users')->where('id', $id)->where('userType', 'admin')->count();
+        echo $admin;
+        if($admin ==  1)
+        {
+            return view('create');
+        }
+        return redirect('/');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -68,7 +82,60 @@ class PagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $min =Request::input('min');
+        $max = Request::input('max');
+        if($min > $max ||  $min < 0 || $max < 0)
+        {
+            return redirect('create');
+        }
+        $users = DB::table('users')->get();
+
+        $numUsers = DB::table('users')->count();
+        $numTeams = $numUsers/$min;
+
+        $teams = array();
+        for($i=0; $i<$numTeams; $i++)
+        {
+            $teams[$i] = array();
+        }
+        $remaining = 0;
+        for($i=0; $i<count($users); $i++)
+        {
+            if(count($users) -$i < $min)
+            {
+                $remaining = $i;
+                break;
+            }
+            for($j=0; $j<$numTeams; $j++)
+            {
+
+                if(count($teams[$j]) < $min )
+                {
+                    array_push($teams[$j], $users[$i]->firstName.$users[$i]->lastName);
+
+                    break;
+
+                }
+            }
+
+
+        }
+        for($i = $remaining; $i<count($users); $i++)
+        {
+            for($j=0; $j<$numTeams; $j++)
+            {
+
+                if(count($teams[$j]) < $max )
+                {
+                    array_push($teams[$j], $users[$i]->firstName.$users[$i]->lastName);
+
+                    break;
+
+                }
+            }
+        }
+
+        return view('teams', ['teams' => $teams]);
     }
 
     /**
@@ -115,4 +182,5 @@ class PagesController extends Controller
     {
         //
     }
+
 }

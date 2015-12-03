@@ -27,16 +27,39 @@ class UserTableSeeder extends seeder
        // $myfile = fopen("D:/School/Mines/WebProgramming/finalProject/finalProject/database/seeds/students.csv", "r") or die("Unable to open file!");
         $myfile = fopen("database/seeds/students.csv", "r") or die("Unable to open file!");
         DB::table('users')->delete();
-
+        $rawLine = "";
         while(($line = fgets($myfile)) !== false){
             $rawLine = rtrim($line);
-            echo $rawLine;
+
             $info = explode(",", $rawLine);
 
-            App\User::create(['username' => $info[0].' '.$info[1], 'password' => bcrypt(strval($info[2])), 'email' => $info[3]]);
+            App\User::create(['firstName' => $info[0],
+                              'lastName'=> $info[1],
+                              'password' => bcrypt(strval($info[2])),
+                              'email' => $info[3],
+                              'userType'=>$info[4],
+                              'language1'=>$info[5],
+                              'language2'=>$info[6],
+                              'language3'=>$info[7],
+                              'teamStyle1' => $info[8],
+                              'teamStyle2' => $info[9],
+                              'teamStyle3' => $info[10],
+
+                            ]);
         }
         fclose($myfile);
-        App\User::create(['username' => 'Kyle Dymowski', 'password' => bcrypt('12345678'), 'email' => 'kdymowsk@mines.edu']);
+        $info = explode(",", $rawLine);
+        App\User::create(['firstName' => 'Kyle',
+                            'lastName'=> 'Dymowski',
+                            'password' => bcrypt('12345678'),
+                            'email' => 'kdymowsk@mines.edu',
+                            'userType'=>'admin',
+                            'language1'=>$info[5],
+                            'language2'=>$info[6],
+                            'language3'=>$info[7],
+                            'teamStyle1' => $info[8],
+                            'teamStyle2' => $info[9],
+                            'teamStyle3' => $info[10]]);
 
     }
 }
