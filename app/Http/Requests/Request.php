@@ -26,7 +26,7 @@ abstract class Request extends FormRequest
         return
             [
                 //title rule that requires an input of 5 or more characters
-                'name' => 'required',
+            //    'name' => 'required',
                 //author rule
                 'class' => 'required',
                 //year rule
