@@ -26,6 +26,6 @@ class CreateUserCourseXref extends Migration
      */
     public function down()
     {
-        Schema::drop('userCourseXref');
+        //Schema::drop('userCourseXref');
     }
 }

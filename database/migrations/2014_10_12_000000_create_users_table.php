@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('bio');
             $table->string('teamSytle');
             $table->string('email')->unique();
+            $table->string('updated_at');
+            $table->string('created_at');
         });
     }
 

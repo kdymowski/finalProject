@@ -27,6 +27,6 @@ class CreateTeam extends Migration
      */
     public function down()
     {
-        Schema::drop('team');
+        //Schema::drop('team');
     }
 }
